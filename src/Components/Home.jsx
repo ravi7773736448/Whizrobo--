@@ -97,7 +97,7 @@ const Home = () => {
     {/* Right Image */}
     <div className="flex justify-center md:justify-end mt-10 md:mt-0">
       <img
-        src="/IMG_3942.png"
+        src="https://whizrobo.com/wp-content/uploads/2024/11/IBR11-scaled.jpg"
         alt="Hands-on Robotics Learning"
         className="rounded-xl shadow-2xl w-full max-w-md object-contain"
         style={{ aspectRatio: '4/3' }}
