@@ -95,11 +95,11 @@ const Home = () => {
     </div>
 
     {/* Right Image */}
-    <div className="flex justify-center md:justify-end">
+    <div className="flex justify-center md:justify-end mt-10 md:mt-0">
       <img
         src="/IMG_3942.png"
         alt="Hands-on Robotics Learning"
-        className="rounded-xl shadow-2xl max-w-full md:max-w-lg object-cover"
+        className="rounded-xl shadow-2xl w-full max-w-md object-contain"
         style={{ aspectRatio: '4/3' }}
       />
     </div>
