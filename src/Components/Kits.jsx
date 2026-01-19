@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-// Kits data
+// Kits data (same as yours)
 const kitsData = {
   IOT: [
     {
@@ -116,12 +116,12 @@ const Kits = () => {
   return (
     <div className="w-full font-sans min-h-screen bg-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
       {/* Kit Selector */}
-      <div className="flex gap-4 p-6 sticky top-0 z-50 bg-white border-b border-gray-200">
+      <div className="flex gap-3 overflow-x-auto p-4 sticky top-0 z-50 bg-white border-b border-gray-200">
         {Object.keys(kitsData).map((kit) => (
           <button
             key={kit}
             onClick={() => setSelectedKit(kit)}
-            className={`px-6 py-2 rounded-full font-semibold text-sm md:text-base transition-all duration-300 shadow-sm ${
+            className={`flex-shrink-0 px-4 py-2 rounded-full font-semibold text-sm md:text-base transition-all duration-300 shadow-sm whitespace-nowrap ${
               selectedKit === kit
                 ? "bg-[#EC7B21] text-white scale-105"
                 : "bg-white text-black border border-[#EC7B21] hover:bg-[#EC7B21] hover:text-white"
@@ -134,12 +134,12 @@ const Kits = () => {
 
       <div className="flex flex-col md:flex-row mt-6 gap-6 px-4 md:px-6">
         {/* Sidebar */}
-        <aside className="md:w-64 bg-white rounded-2xl shadow-sm p-4 flex flex-col gap-4 sticky top-[88px] max-h-[calc(100vh-100px)] overflow-y-auto">
+        <aside className="md:w-64 bg-white rounded-2xl shadow-sm p-4 flex md:flex-col gap-4 overflow-x-auto md:overflow-y-auto md:sticky md:top-[88px]">
           {kitsData[selectedKit].map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className={`cursor-pointer flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-300 ${
+              className={`cursor-pointer flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-300 flex-shrink-0 ${
                 selectedItem.id === item.id
                   ? "bg-[#fff5ee] font-bold border-2 border-[#EC7B21]"
                   : "hover:bg-[#fff5ee]"
@@ -148,7 +148,7 @@ const Kits = () => {
               <img
                 src={item.src}
                 alt={item.name}
-                className="w-20 h-20 object-cover rounded-full border border-[#EC7B21]"
+                className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-full border border-[#EC7B21]"
                 onError={handleImageError}
               />
               <span className="text-center text-sm md:text-base font-semibold text-black">{item.name}</span>
@@ -157,18 +157,18 @@ const Kits = () => {
         </aside>
 
         {/* Content */}
-        <section className="flex-1 flex flex-col md:flex-row gap-8">
+        <section className="flex-1 flex flex-col md:flex-row gap-6 md:gap-8 mt-4 md:mt-0">
           {/* Text Content */}
-          <div className="md:w-1/2 bg-white rounded-2xl shadow-sm p-8 flex flex-col gap-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-black text-center">{selectedItem.name}</h2>
-            <p className="text-lg md:text-xl text-black">{selectedItem.description}</p>
+          <div className="md:w-1/2 bg-white rounded-2xl shadow-sm p-6 md:p-8 flex flex-col gap-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center md:text-left">{selectedItem.name}</h2>
+            <p className="text-sm sm:text-base md:text-lg text-black">{selectedItem.description}</p>
 
             {/* Grade Lines */}
-            <ul className="space-y-3 mt-4">
+            <ul className="space-y-2 mt-4">
               {selectedItem.grades.map((line, index) => (
                 <li
                   key={index}
-                  className="text-[#EC7B21] font-semibold text-base md:text-lg border-l-4 border-[#EC7B21] pl-3"
+                  className="text-[#EC7B21] font-semibold text-sm md:text-base border-l-4 border-[#EC7B21] pl-2"
                 >
                   {line}
                 </li>
@@ -181,7 +181,7 @@ const Kits = () => {
             <img
               src={selectedItem.src}
               alt={selectedItem.name}
-              className="max-h-[500px] object-cover rounded-2xl"
+              className="w-full max-w-full md:max-w-md object-cover rounded-2xl"
               onError={handleImageError}
             />
           </div>
