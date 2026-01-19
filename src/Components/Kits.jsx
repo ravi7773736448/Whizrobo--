@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 const kitsData = {
   IOT: [
     {
@@ -114,10 +113,7 @@ const Kits = () => {
   };
 
   return (
-    <div
-      className="w-full min-h-screen bg-white font-sans"
-      style={{ fontFamily: "Montserrat, sans-serif" }}
-    >
+    <div className="w-full min-h-screen bg-white font-sans" style={{ fontFamily: "Montserrat, sans-serif" }}>
       {/* Kit Selector */}
       <div className="flex gap-3 overflow-x-auto p-4 sticky top-0 z-50 bg-white border-b border-gray-200">
         {Object.keys(kitsData).map((kit) => (
@@ -138,35 +134,37 @@ const Kits = () => {
       {/* Main Content */}
       <div className="flex flex-col md:flex-row gap-6 px-4 md:px-8 mt-6">
         {/* Sidebar */}
-        <aside className="md:w-72 bg-white rounded-2xl shadow-sm p-4 overflow-y-auto max-h-[calc(100vh-100px)] sticky top-[88px] flex flex-col gap-4">
+        <aside className="md:w-72 bg-white rounded-2xl shadow-sm p-4 sticky top-[88px] overflow-x-auto md:overflow-y-auto flex flex-row md:flex-col gap-4">
           {kitsData[selectedKit].map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedItem(item)}
-              className={`cursor-pointer flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-300 ${
+              className={`cursor-pointer flex flex-col items-center gap-2 p-2 md:p-3 rounded-xl transition-all duration-300 ${
                 selectedItem.id === item.id
                   ? "bg-[#fff5ee] font-bold border-2 border-[#EC7B21]"
                   : "hover:bg-[#fff5ee]"
               }`}
-              style={{ minWidth: "72px" }} // prevent shrinking
+              style={{ minWidth: "64px" }}
             >
-              <img
-                src={item.src}
-                alt={item.name}
-                className="w-20 h-20 object-cover rounded-full border border-[#EC7B21]"
-                onError={handleImageError}
-              />
-              <span className="text-center text-sm md:text-base font-semibold text-black select-none">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex-shrink-0 rounded-full border border-[#EC7B21] overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.name}
+                  className="w-full h-full object-cover"
+                  onError={handleImageError}
+                />
+              </div>
+              <span className="text-center text-xs sm:text-sm md:text-base font-semibold text-black select-none">
                 {item.name}
               </span>
             </div>
           ))}
         </aside>
 
-        {/* Content Area */}
-        <section className="flex-1 flex flex-col md:flex-row gap-8">
+        {/* Content Area: Use grid for proper alignment */}
+        <section className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {/* Text */}
-          <div className="md:w-1/2 flex flex-col justify-start gap-4">
+          <div className="flex flex-col justify-start gap-4">
             <h2 className="text-3xl md:text-4xl font-bold text-black text-center md:text-left">
               {selectedItem.name}
             </h2>
@@ -185,15 +183,16 @@ const Kits = () => {
           </div>
 
           {/* Image */}
-          <div className="md:w-1/2 flex justify-center items-center">
-            <img
-              src={selectedItem.src}
-              alt={selectedItem.name}
-              className="w-full max-w-md object-contain rounded-2xl shadow-md"
-              onError={handleImageError}
-              loading="lazy"
-              style={{ maxHeight: "400px" }}
-            />
+          <div className="flex justify-center items-start">
+            <div className="w-full max-w-md aspect-[4/3]">
+              <img
+                src={selectedItem.src}
+                alt={selectedItem.name}
+                className="w-full h-full object-contain rounded-2xl shadow-md"
+                onError={handleImageError}
+                loading="lazy"
+              />
+            </div>
           </div>
         </section>
       </div>
