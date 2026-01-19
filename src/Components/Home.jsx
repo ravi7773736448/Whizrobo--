@@ -59,7 +59,7 @@ const Home = () => {
              shadow-lg hover:shadow-[0_8px_15px_rgba(236,123,33,0.7)]
              transition-shadow duration-300 hover:scale-105"
 >
-  Explore Robots
+  Explore Robot Kits
 </Link>
 
           </div>
