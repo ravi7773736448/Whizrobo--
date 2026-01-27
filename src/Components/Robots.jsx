@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const robotsData = [
   {
@@ -8,6 +7,14 @@ const robotsData = [
     image: "/WhizBot.jpg",
     shortDesc:
       "Automates workflows and delivers intelligent actions to simplify complex tasks.",
+    description: "WHIZ BOT – AI AGENT",
+    bullets: [
+      "Automates complex workflows and manages multi-step tasks.",
+      "Provides real-time operational support within school systems.",
+      "Acts as a smart agent for data integration and automation.",
+    ],
+    footer:
+      "WHIZ BOT simplifies operations by intelligently managing workflows and system automation.",
   },
   {
     id: "2",
@@ -15,6 +22,14 @@ const robotsData = [
     image: "/WhizBuddy.jpg",
     shortDesc:
       "Smart assistant for schools, helping teachers manage classrooms and support students.",
+    description: "WHIZ BUDDY – AI ASSISTANT",
+    bullets: [
+      "Supports students and staff with personalized assistance.",
+      "Helps manage schedules, reminders, and basic queries.",
+      "Facilitates interactive learning and collaborative projects.",
+    ],
+    footer:
+      "WHIZ BUDDY supports productivity and learning through intelligent assistance.",
   },
   {
     id: "3",
@@ -22,6 +37,14 @@ const robotsData = [
     image: "/WhizGreet.jpg",
     shortDesc:
       "Welcomes visitors with AI-powered interaction, face recognition, and scheduling assistance.",
+    description: "WHIZ GREETER – AI RECEPTIONIST",
+    bullets: [
+      "Welcomes visitors and manages front desk communications.",
+      "Handles appointment scheduling and visitor information.",
+      "Guides guests through premises with interactive directions.",
+    ],
+    footer:
+      "WHIZ GREETER delivers a smart and interactive front desk experience.",
   },
   {
     id: "4",
@@ -29,6 +52,14 @@ const robotsData = [
     image: "/Whiz aaru.jpg",
     shortDesc:
       "AI Teacher delivering personalized lessons, quizzes, and real-time learning support.",
+    description: "WHIZ AARU – AI TEACHER",
+    bullets: [
+      "Delivers interactive, personalized lessons across subjects.",
+      "Creates dynamic quizzes and learning paths tailored to students.",
+      "Assists educators by automating administrative tasks and tracking progress.",
+    ],
+    footer:
+      "WHIZ AARU enhances teaching and learning through intelligent classroom support.",
   },
 ];
 
@@ -79,18 +110,32 @@ const Robots = () => {
 
               {/* Robot Content */}
               <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center text-center md:text-left">
-                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase mb-4 transition-transform duration-500 hover:translate-y-[-3px]">
+                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase mb-2 transition-transform duration-500 hover:translate-y-[-3px]">
                   {robot.name}
                 </h3>
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
                   {robot.shortDesc}
                 </p>
-                <Link
-                  to={`/robots/${robot.id}`}
-                  className="inline-block bg-[#EC7B21] hover:bg-[#d96b1d] text-white font-semibold rounded-full px-6 py-3 transition-all duration-300 self-center md:self-start shadow-md hover:shadow-lg"
-                >
-                  View Details →
-                </Link>
+
+                <p className="text-gray-800 font-semibold text-lg md:text-xl mb-4">
+                  {robot.description}
+                </p>
+
+                <ul className="space-y-3 mb-4">
+                  {robot.bullets.map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-gray-700">
+                      <span
+                        className="mt-1 inline-block h-3 w-3 flex-shrink-0 rounded-full bg-[#EC7B21]"
+                        aria-hidden="true"
+                      />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="text-gray-900 font-semibold  text-lg">
+                  {robot.footer}
+                </p>
               </div>
             </div>
           ))}

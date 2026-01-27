@@ -1,27 +1,75 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
   const [isRegister, setIsRegister] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  // Update form data on input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Submit login/register
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Frontend-only: simulate success
-    if (isRegister) {
-      alert(`Registered Successfully! Welcome, ${formData.name}`);
-      setIsRegister(false);
-    } else {
-      alert(`Welcome back, ${formData.email}!`);
+    setLoading(true);
+
+    const url = isRegister
+      ? "http://localhost:5000/api/auth/register"
+      : "http://localhost:5000/api/auth/login";
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.msg || "Something went wrong!");
+        setLoading(false);
+        return;
+      }
+
+      // Save token & user info
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Success toast
+      toast.success(
+        isRegister
+          ? `Welcome ${data.user.name}! Account created 🎉`
+          : `Welcome back ${data.user.name} 👋`
+      );
+
+      // Reset form
+      setFormData({ name: "", email: "", password: "" });
+
+      if (isRegister) {
+        setIsRegister(false);
+      } else {
+        // Optional: callback to parent (like Navbar) to update user state
+        if (onLogin) onLogin(data.user);
+        navigate("/dashboard"); // redirect to dashboard
+      }
+    } catch (error) {
+      toast.error("Server error. Try again later!");
+    } finally {
+      setLoading(false);
     }
-    setFormData({ name: "", email: "", password: "" });
   };
 
   return (
@@ -45,8 +93,8 @@ const Login = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                required
                 placeholder="Enter your name"
+                required
                 className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#EC7B21] focus:outline-none"
               />
             </div>
@@ -59,8 +107,8 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
               placeholder="you@example.com"
+              required
               className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#EC7B21] focus:outline-none"
             />
           </div>
@@ -72,8 +120,8 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              required
               placeholder="••••••••"
+              required
               className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#EC7B21] focus:outline-none pr-12"
             />
             <span
@@ -88,9 +136,12 @@ const Login = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             type="submit"
-            className="w-full bg-gradient-to-r from-[#EC7B21] to-orange-400 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            disabled={loading}
+            className={`w-full bg-gradient-to-r from-[#EC7B21] to-orange-400 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            {isRegister ? "Sign Up" : "Log In"}
+            {loading ? <Spinner /> : isRegister ? "Sign Up" : "Log In"}
           </motion.button>
         </form>
 
@@ -128,3 +179,8 @@ const Login = () => {
 };
 
 export default Login;
+
+// ===== Spinner Component =====
+const Spinner = () => (
+  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+);

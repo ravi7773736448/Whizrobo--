@@ -13,83 +13,65 @@ const Privacy = () => {
       <div className="space-y-8 text-gray-700 leading-relaxed">
 
         <p>
-          This privacy policy (“Policy”) forms an electronic contract within the provisions of the Information Technology Act, 2000 (“IT Act”) and the rules made thereunder. This Policy is a legally binding document between You and WHIZROBO. The terms of this Policy will be effective upon Your acceptance and will govern the relationship between You and WHIZROBO for Your use of the Website.
+          This privacy policy (“Policy”) forms an electronic contract under the provisions of the Information Technology Act, 2000 (“IT Act”) and the rules made thereunder. This Policy is a legally binding agreement between you and WHIZROBO and governs your use of the Website.
         </p>
 
         <p>
-          By visiting this Website, the User agrees to be bound by the terms and conditions of this Policy. If a User does not agree with the terms, they should refrain from using the Website.
+          By visiting this Website, you agree to be bound by the terms of this Policy. If you do not agree with these terms, please refrain from using the Website.
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">1. Collection of Information</h2>
         <p>
-          The Website may collect the following information from Users:
+          We may collect the following information from users:
         </p>
 
-        <h3 className="text-xl font-semibold mt-4">1.1 Personal Information:</h3>
-        <ul className="list-disc list-inside space-y-1">
-          <li>Name</li>
-          <li>Phone number</li>
-          <li>Gender</li>
-          <li>Date of birth</li>
-          <li>Address</li>
-          <li>Email ID</li>
-          <li>Social media information if registered via social networks</li>
-          <li>IP Address</li>
-          <li>Other personal data as per IT Act rules</li>
-          <li>Any other info required for accessing the Website</li>
-        </ul>
+        <h3 className="text-xl font-semibold mt-4">1.1 Personal Information</h3>
+        <p>
+          This may include your name, phone number, gender, date of birth, address, email ID, social media information if registered via social networks, IP address, or any other personal data required for accessing the Website.
+        </p>
 
-        <h3 className="text-xl font-semibold mt-4">1.2 Non-Personal Information:</h3>
-        <ul className="list-disc list-inside space-y-1">
-          <li>Internet/telecom service provider details</li>
-          <li>Location of the User</li>
-          <li>Browser type</li>
-          <li>Other info required to access the Website</li>
-          <li>User-generated content uploaded for projects or competitions</li>
-        </ul>
+        <h3 className="text-xl font-semibold mt-4">1.2 Non-Personal Information</h3>
+        <p>
+          Non-personal information may include internet or telecom service provider details, location, browser type, user-generated content uploaded for projects or competitions, or other information necessary to access and improve the Website.
+        </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">2. Representation and Warranties</h2>
         <p>
-          Users represent and warrant that all information provided is true, correct, and authorized for use. Users agree to indemnify WHIZROBO in case of any breach of this Policy.
+          Users represent and warrant that all information provided is accurate and authorized for use. Users agree to indemnify WHIZROBO in the event of any breach of this Policy.
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">3. Purpose and Use of Information</h2>
-        <ul className="list-disc list-inside space-y-1 mt-2">
-          <li>Provide info about new products and services</li>
-          <li>Improve the Website and offerings</li>
-          <li>Conduct research and surveys</li>
-          <li>Ensure security of personal data</li>
-          <li>Administer user accounts</li>
-          <li>Communicate important updates</li>
-          <li>Send verification messages</li>
-          <li>Other purposes as deemed fit by WHIZROBO</li>
-        </ul>
+        <p>
+          Information collected is used to provide updates about products and services, improve the Website, conduct research and surveys, ensure data security, manage user accounts, communicate important updates, send verification messages, and other purposes deemed necessary by WHIZROBO.
+        </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">4. Sharing of Information</h2>
         <p>
-          WHIZROBO may share information with affiliates, employees, third parties, or social platforms for operational, safety, legal, and promotional purposes, subject to compliance with reasonable data protection standards.
+          WHIZROBO may share information with affiliates, employees, third parties, or social platforms for operational, legal, safety, or promotional purposes, in compliance with reasonable data protection standards.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900 mt-8">5. Third Party Website Links</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mt-8">5. Third-Party Website Links</h2>
         <p>
           The Website may contain links to third-party websites. WHIZROBO is not responsible for the privacy practices or content of these websites.
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">6. Protection of Information</h2>
         <p>
-          WHIZROBO employs security measures to protect User information. However, Users acknowledge that no method of transmission over the internet is 100% secure.
+          WHIZROBO employs appropriate security measures to protect user information. However, no method of transmission over the internet is 100% secure.
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">7. Withdrawal of Information</h2>
         <p>
-          Users can withdraw information at any time by contacting the grievance officer via email.
+          Users may withdraw information at any time by contacting the grievance officer via email.
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">8. Grievance Redressal</h2>
         <p>
-          For privacy complaints, Users may contact:
-          <br />
-          <strong>Email:</strong> <a href="mailto:info@whizrobo.com" className="text-indigo-600 hover:underline">info@whizrobo.com</a>
+          For privacy complaints, users may contact: <br />
+          <strong>Email:</strong>{" "}
+          <a href="mailto:info@whizrobo.com" className="text-indigo-600 hover:underline">
+            info@whizrobo.com
+          </a>
         </p>
 
         <h2 className="text-2xl font-bold text-gray-900 mt-8">9. Video Content</h2>
