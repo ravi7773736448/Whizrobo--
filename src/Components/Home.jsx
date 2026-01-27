@@ -53,6 +53,7 @@ const Home = () => {
               for learners of all ages.
             </p>
 
+<<<<<<< HEAD
             <Link
               to="/kits"
               className="mt-6 sm:mt-10 inline-block bg-[#EC7B21] text-white px-8 sm:px-12 py-3 sm:py-4 rounded-lg font-semibold text-lg
@@ -61,6 +62,17 @@ const Home = () => {
             >
               Explore RobotKits
             </Link>
+=======
+              <Link
+  to="/kits"
+  className="mt-6 sm:mt-10 inline-block bg-[#EC7B21] text-white px-8 sm:px-12 py-3 sm:py-4 rounded-lg font-semibold text-lg
+             shadow-lg hover:shadow-[0_8px_15px_rgba(236,123,33,0.7)]
+             transition-shadow duration-300 hover:scale-105"
+>
+  Explore Robot Kits
+</Link>
+
+>>>>>>> 01a0ad3c1304da35f2186412dbfd26f0300bb311
           </div>
         </section>
 
